@@ -36,7 +36,7 @@
 			while (rs.next()) {
 				out.println("<tr>");
 				out.println("<td>");
-				out.println("<input type= 'radio' name = radio>");
+				out.println("<input type= 'radio' name = 'stu'>");
 				out.println("</td>");
 				out.println("<td>");
 				out.println(rs.getString("stu_name"));
