@@ -26,12 +26,13 @@
 	<%
 		ResultSet rs = null;
 		Statement stmt = null;
-		String boardNo = request.getParameter("boardNo");
+		String userId = request.getParameter("userId");
+		
 		try{
 			stmt = conn.createStatement();
-			String querytext = "DELETE FROM TBL_BOARD WHERE boardNo = " + boardNo;
+			String querytext = "UPDATE TBL_USER SET CNT = 0 WHERE userId = '" + userId + "'";
 			stmt.executeUpdate(querytext);
-			
+		
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
 		}
@@ -40,6 +41,7 @@
 </body>
 </html>
 <script>
-	alert("삭제되었다!");
-	location.href = "board-list2.jsp";
+	alert("초기화 되었습니다.");
+	window.close();
+	window.opener.fnReload();
 </script>

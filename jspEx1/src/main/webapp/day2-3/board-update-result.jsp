@@ -27,9 +27,11 @@
 		ResultSet rs = null;
 		Statement stmt = null;
 		String boardNo = request.getParameter("boardNo");
+		String title = request.getParameter("title");
+		String contents = request.getParameter("contents");
 		try{
 			stmt = conn.createStatement();
-			String querytext = "DELETE FROM TBL_BOARD WHERE boardNo = " + boardNo;
+			String querytext = "UPDATE TBL_BOARD SET TITLE = '"+ title +"', CONTENTS= '"+ contents +"'  WHERE boardNo = " + boardNo;
 			stmt.executeUpdate(querytext);
 			
 		} catch(SQLException ex) {
@@ -40,6 +42,5 @@
 </body>
 </html>
 <script>
-	alert("삭제되었다!");
 	location.href = "board-list2.jsp";
 </script>

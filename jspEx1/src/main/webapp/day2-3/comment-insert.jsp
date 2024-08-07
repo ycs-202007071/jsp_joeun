@@ -27,11 +27,19 @@
 		ResultSet rs = null;
 		Statement stmt = null;
 		String boardNo = request.getParameter("boardNo");
+		String sessionId = request.getParameter("userId");
+		String comment = request.getParameter("comment");
+		
+		
 		try{
 			stmt = conn.createStatement();
-			String querytext = "DELETE FROM TBL_BOARD WHERE boardNo = " + boardNo;
+			String querytext = 
+					"INSERT INTO TBL_COMMENT VALUES ("
+					+ "NULL, " + boardNo + ",'" + sessionId + "', '" + comment + "', "
+					+ "0, now(), now()"
+					+ ")";
 			stmt.executeUpdate(querytext);
-			
+		
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
 		}
@@ -39,7 +47,3 @@
 
 </body>
 </html>
-<script>
-	alert("삭제되었다!");
-	location.href = "board-list2.jsp";
-</script>
