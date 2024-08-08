@@ -55,7 +55,10 @@
 					<%= rs.getString("title") %>
 				</a>
 			</td>
-			<td> <%= rs.getString("userId") %></td>
+			<td> <a href="#" onclick="fnuser('<%= rs.getString("userId") %>')">
+					<%= rs.getString("userId") %>
+				</a>
+				</td>
 			<td> <%= rs.getString("cnt") %></td>
 			<td> <%= rs.getString("cdatetime") %></td>
 		</tr>
@@ -77,5 +80,8 @@
 <script>
 	function fnView(boardNo){
 		location.href="board-view.jsp?boardNo="+boardNo;
+	}
+	function fnuser(userId){
+		location.href="user-info.jsp?userId="+userId;
 	}
 </script>
