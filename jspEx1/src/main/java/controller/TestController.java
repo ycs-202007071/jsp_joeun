@@ -16,8 +16,9 @@ import model.User;
 public class TestController extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  TestDAO dao = new TestDAO();
-	  String name = dao.userDB();
-      request.setAttribute("name", name);
+		/*
+		 * String name = dao.userDB(); request.setAttribute("name", name);
+		 */
       
       
       request.getRequestDispatcher("/day5/zzz.jsp").forward(request, response);
