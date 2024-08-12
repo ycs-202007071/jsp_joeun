@@ -1,16 +1,12 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@page import="java.awt.Checkbox"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ page import="java.sql.*" %>
+<%@page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page = "header.jsp" flush ="false" />
-<title>Insert title here</title>
-
+<jsp:include page="header.jsp" flush="false" />
+<title>회원 관리</title>
 <style>
 /* 기본 스타일 설정 */
 body {
@@ -65,69 +61,68 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #ddd;
 }
-
 </style>
 </head>
 <body>
 <button onclick="location.href='home.jsp'">홈페이지로 이동</button>
 <table>
-	<tr>
-		<th>아이디</th>
-		<th>이름</th>
-		<th>권한</th>
-		<th>비밀번호</th>
-		<th>유저삭제</th>
-	</tr>
+    <tr>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>권한</th>
+        <th>비밀번호</th>
+        <th>유저삭제</th>
+    </tr>
 
-	<%@include file="db.jsp"%>	
-	<%
-		ResultSet rs = null;
-		Statement stmt = null;
-		
-		try{
-			stmt = conn.createStatement();
-			String querytext = "SELECT * FROM users";
-			rs = stmt.executeQuery(querytext);
-			
-			while(rs.next()){
-				String status = rs.getString("status").equals("A") ?"관리자" : "일반회원";
-				int cnt = rs.getInt("cnt");
-	%>
-				<tr>
-				<td><%= rs.getString("ID") %></td>
-				<td><%= rs.getString("name") %></td>
-				<td><%= status %></td>
-				<td><% if(cnt >= 5){ %>
-				<button onclick="fnReset('<%= rs.getString("id") %>')">초기화</button>
-				<% } %></td>
-				<td><% if(status == "C"){ %>
-				<button onclick="fnDelect()'<%= rs.getString("id") %>')">유저삭제</button>
-				<% } %></td>
-				</tr>
-			
-	<%
-			}
-
-		
-		} catch(SQLException ex) {
-			out.println("SQLException : " + ex.getMessage());
-		}
-	%>
-	</table>
-	<jsp:include page = "bottom.jsp" flush ="false" />
+    <%@include file="db.jsp"%>
+    <%
+        ResultSet rs = null;
+        Statement stmt = null;
+        
+        try {
+            stmt = conn.createStatement();
+            String querytext = "SELECT * FROM users";
+            rs = stmt.executeQuery(querytext);
+            
+            while (rs.next()) {
+                String status = rs.getString("status").equals("A") ? "관리자" : "일반회원";
+                int cnt = rs.getInt("cnt");
+    %>
+    <tr>
+        <td><%= rs.getString("ID") %></td>
+        <td><%= rs.getString("name") %></td>
+        <td><%= status %></td>
+        <td>
+            <% if (cnt >= 5) { %>
+            <button onclick="fnReset('<%= rs.getString("ID") %>')">초기화</button>
+            <% } %>
+        </td>
+        <td>
+            <% if (status.equals("C")) { %>
+            <button onclick="fnDelete('<%= rs.getString("ID") %>')">유저삭제</button>
+            <% } %>
+        </td>
+    </tr>
+    <%
+            }
+        } catch (SQLException ex) {
+            out.println("SQLException : " + ex.getMessage());
+        }
+    %>
+</table>
+<jsp:include page="bottom.jsp" flush="false" />
 </body>
 </html>
 <script>
-	function fnReset(id){
-		/* location.href="pwd-reset.jsp?userId="+userId; */
-		window.open("pwd-reset.jsp?userId="+id, "reset", "width=500, height=300")
-	}
-	function fnDelect(id){
-		/* location.href="pwd-reset.jsp?userId="+userId; */
-		window.open("user-Delect.jsp?userId="+id, "delect", "width=500, height=300")
-	}
-	function fnReload(){
-		location.reload();
-	}
+    function fnReset(id) {
+        window.open("pwd-reset.jsp?userId=" + id, "reset", "width=500,height=300");
+    }
+
+    function fnDelete(id) {
+        window.open("user-delete.jsp?userId=" + id, "delete", "width=500,height=300");
+    }
+
+    function fnReload() {
+        location.reload();
+    }
 </script>
-​
