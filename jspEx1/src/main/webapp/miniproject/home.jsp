@@ -46,16 +46,44 @@ caption {
     <table border="1">
         <caption>새로 들어온 책</caption>
         <tr>
-            <td><a href="#"><img src="./img/bookimg/당신이 누군가 죽였다.PNG" width="200" height="275" /></a></td>
-            <td><a href="#"><img src="./img/bookimg/더 좋은 문장을 쓰고 싶은 당신을 위한 필사책.PNG" width="200" height="270" /></a></td>
-            <td><a href="#"><img src="./img/bookimg/불안세대.PNG" width="200" height="280" /></a></td>
-            <td><a href="#"><img src="./img/bookimg/대모험.jpg" width="200" height="270" /></a></td>
+           <td>
+			    <a href="#" onclick="fnReviews('book011'); return false;">
+			        <img src="./img/bookimg/당신이 누군가 죽였다.PNG" width="200" height="275" />
+			    </a>
+			</td>
+			<td>
+			    <a href="#" onclick="fnReviews('book019'); return false;">
+			        <img src="./img/bookimg/더 좋은 문장을 쓰고 싶은 당신을 위한 필사책.PNG" width="200" height="270" />
+			    </a>
+			</td>
+			<td>
+			    <a href="#" onclick="fnReviews('book014'); return false;">
+			        <img src="./img/bookimg/불안세대.PNG" width="200" height="280" />
+			    </a>
+			</td>
+			<td>
+			    <a href="#" onclick="fnReviews('vook001'); return false;">
+			        <img src="./img/bookimg/대모험.jpg" width="200" height="270" />
+			    </a>
+			</td>
+
         </tr>
         <tr>
-            <td><a href="#"><img src="./img/Engbook/Foster.PNG" width="200" height="275" /></a></td>
-            <td><a href="#"><img src="./img/Engbook/Holes.PNG"" width="200" height="270" /></a></td>
-            <td><a href="#"><img src="./img/Engbook/wonder.PNG" width="200" height="280" /></a></td>
- 
+	       <td>
+			    <a href="#" data-value="vook018" onclick="fnView(this.getAttribute('data-value')); return false;">
+			        <img src="./img/Engbook/Foster.PNG" width="200" height="270" />
+			    </a>
+			</td>
+			<td>
+			    <a href="#" data-value="book016" onclick="fnView(this.getAttribute('data-value')); return false;">
+			        <img src="./img/Engbook/Holes.PNG" width="200" height="270" />
+			    </a>
+			</td>
+			<td>
+			    <a href="#" data-value="book017" onclick="fnView(this.getAttribute('data-value')); return false;">
+			        <img src="./img/Engbook/wonder.PNG" width="200" height="270" />
+			    </a>
+			</td>
         </tr>
     </table>
 </div>
@@ -64,3 +92,9 @@ caption {
 
 </body>
 </html>
+
+<script>
+function fnReviews(bookNum){
+	location.href="reviews.jsp?bookNum="+bookNum;
+}
+</script>
