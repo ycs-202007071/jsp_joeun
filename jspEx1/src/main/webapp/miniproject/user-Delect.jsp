@@ -30,7 +30,8 @@
 		
 		try{
 			stmt = conn.createStatement();
-			String querytext = "DELECT FROM USERS WHERE id = '" + id + "'";
+			String querytext = "DELETE FROM USERS WHERE id = '" + id + "'";
+			System.out.println(querytext);
 			stmt.executeUpdate(querytext);
 		
 		} catch(SQLException ex) {

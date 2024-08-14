@@ -12,6 +12,11 @@ table {
     border: 0px solid white;
 }
 
+header, footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
 td {
     text-align: center;
     border: 0px dotted white;
@@ -39,22 +44,18 @@ caption {
 
 <div style="height: auto;">
     <table border="1">
-        <caption>이달의 책</caption>
+        <caption>새로 들어온 책</caption>
         <tr>
-            <td><a href="#"><img src="./기타사진/그림자포스터/미아.png" width="200" height="275" /></a></td>
-            <td><a href="#"><img src="./기타사진/그림자포스터/사찬.png" width="200" height="270" /></a></td>
-            <td><a href="#"><img src="./기타사진/그림자포스터/이보통.png" width="200" height="280" /></a></td>
-            <td><a href="#"><img src="./기타사진/그림자포스터/언.png" width="200" height="270" /></a></td>
-            <td><a href="#"><img src="./기타사진/그림자포스터/해적.png" width="200" height="270" /></a></td>
-            <td><img src="./기타사진/그림자포스터/록키.png" width="200" height="270" /></td>
+            <td><a href="#"><img src="./img/bookimg/당신이 누군가 죽였다.PNG" width="200" height="275" /></a></td>
+            <td><a href="#"><img src="./img/bookimg/더 좋은 문장을 쓰고 싶은 당신을 위한 필사책.PNG" width="200" height="270" /></a></td>
+            <td><a href="#"><img src="./img/bookimg/불안세대.PNG" width="200" height="280" /></a></td>
+            <td><a href="#"><img src="./img/bookimg/대모험.jpg" width="200" height="270" /></a></td>
         </tr>
         <tr>
-            <td><img src="./기타사진/그림자포스터/킹아더.png" width="200" height="270" /></td>
-            <td><img src="./기타사진/그림자포스터/윤동주.png" width="200" height="270" /></td>
-            <td><img src="./기타사진/그림자포스터/도리안.png" width="200" height="280" /></td>
-            <td><img src="./기타사진/그림자포스터/더데빌.png" width="200" height="275" /></td>
-            <td><img src="./기타사진/그림자포스터/니진.png" width="200" height="270" /></td>
-            <td><img src="./기타사진/그림자포스터/구큐.png" width="200" height="270" /></td>
+            <td><a href="#"><img src="./img/Engbook/Foster.PNG" width="200" height="275" /></a></td>
+            <td><a href="#"><img src="./img/Engbook/Holes.PNG"" width="200" height="270" /></a></td>
+            <td><a href="#"><img src="./img/Engbook/wonder.PNG" width="200" height="280" /></a></td>
+ 
         </tr>
     </table>
 </div>

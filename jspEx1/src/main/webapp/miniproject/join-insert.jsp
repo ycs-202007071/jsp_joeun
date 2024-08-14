@@ -24,8 +24,8 @@
 		
 		
 		stmt = conn.createStatement();
-		String query = "INSERT INTO users" 
-				+ " VALUES ('" + id + "', '" + pwd +"', '" +name + "','" + nickname + "','" + phone + "','" + addr + "','" + email + "','N','C','0')";
+		String query = "INSERT INTO users (id, pwd, name, nickname, phone, addr, email, overdue, status, cnt) " 
+                + "VALUES ('" + id + "', '" + pwd + "', '" + name + "', '" + nickname + "', '" + phone + "', '" + addr + "', '" + email + "', 'N', 'C', '0')";
 		System.out.println(query);
 		stmt.executeUpdate(query);
 		

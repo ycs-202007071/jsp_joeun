@@ -1,41 +1,34 @@
-<%@page import="java.awt.Checkbox"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="db.jsp" %>
+<%
+    String id = request.getParameter("id");
+    ResultSet rs = null;
+    PreparedStatement pstmt = null;
+    boolean isAvailable = false;
 
-<%@ page import="java.sql.*"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    try {
+        String sql = "SELECT 1 FROM users WHERE id = ?";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, id);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+            isAvailable = false; // 아이디가 이미 존재함
+        } else {
+            isAvailable = true; // 아이디가 사용 가능함
+        }
+    } catch (SQLException e) {
+        out.println(e.getMessage());
+    } finally {
+        if (rs != null) try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+    }
+%>
 
-<style>
-</style>
-
-</head>
-<body>
-	<%@include file="db.jsp"%>
-	<%
-	ResultSet rs = null;
-	Statement stmt = null;
-	String id = request.getParameter("userId");
-	
-	try {
-	
-		stmt = conn.createStatement();
-		String query = "SELECT * FROM users WHERE id='" + id + "'";
-		rs = stmt.executeQuery(query);
-			if (rs.next()) {
-				out.println("중복된 아이디입니다.");
-			} else {
-				out.println("사용가능합니다.");
-			
-		}
-	} catch (SQLException ex) {
-		out.println("SQLException : " + ex.getMessage());
-	}
-	
-	%>
-
-</body>
-</html>
+<script>
+    // 중복 확인 결과를 부모 창으로 전달
+    function sendResult() {
+        window.opener.getReturn("<%= isAvailable ? "Y" : "N" %>");
+        window.close();
+    }
+    sendResult(); // 페이지 로드 시 호출
+</script>

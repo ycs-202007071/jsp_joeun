@@ -17,7 +17,7 @@
 		
 		try{
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from books where bookName=" + "'" + bookName + "'");
+			rs = stmt.executeQuery("select * from books where bookName like" + "'%" + bookName + "%'");
 	
 			if (rs.next() == true) {
 				out.println(rs.getString("bookNum") + "\t" + rs.getString("bookName") + "\t"+ rs.getString("publisher") + "\t" + rs.getString("writer") + "<br>"); 

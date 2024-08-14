@@ -89,17 +89,17 @@ tr:hover {
                 int cnt = rs.getInt("cnt");
     %>
     <tr>
-        <td><%= rs.getString("ID") %></td>
+        <td><%= rs.getString("id") %></td>
         <td><%= rs.getString("name") %></td>
         <td><%= status %></td>
         <td>
             <% if (cnt >= 5) { %>
-            <button onclick="fnReset('<%= rs.getString("ID") %>')">초기화</button>
+            <button onclick="fnReset('<%= rs.getString("id") %>')">초기화</button>
             <% } %>
         </td>
         <td>
-            <% if (status.equals("C")) { %>
-            <button onclick="fnDelete('<%= rs.getString("ID") %>')">유저삭제</button>
+            <% if (!status.equals("관리자")) { %>
+            <button onclick="fnDelete('<%= rs.getString("id") %>')">유저삭제</button>
             <% } %>
         </td>
     </tr>
@@ -115,11 +115,11 @@ tr:hover {
 </html>
 <script>
     function fnReset(id) {
-        window.open("pwd-reset.jsp?userId=" + id, "reset", "width=500,height=300");
+        window.open("pwd-reset.jsp?id=" + id, "reset", "width=500,height=300");
     }
 
     function fnDelete(id) {
-        window.open("user-delete.jsp?userId=" + id, "delete", "width=500,height=300");
+        window.open("user-Delect.jsp?id=" + id, "delete", "width=500,height=300");
     }
 
     function fnReload() {
