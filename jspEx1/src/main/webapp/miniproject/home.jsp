@@ -62,7 +62,7 @@ caption {
 			    </a>
 			</td>
 			<td>
-			    <a href="#" onclick="fnReviews('vook001'); return false;">
+			    <a href="#" onclick="fnReviews('book001'); return false;">
 			        <img src="./img/bookimg/대모험.jpg" width="200" height="270" />
 			    </a>
 			</td>
@@ -70,17 +70,17 @@ caption {
         </tr>
         <tr>
 	       <td>
-			    <a href="#" data-value="vook018" onclick="fnView(this.getAttribute('data-value')); return false;">
+			    <a href="#" data-value="book018" onclick="fnReviews(this.getAttribute('data-value')); return false;">
 			        <img src="./img/Engbook/Foster.PNG" width="200" height="270" />
 			    </a>
 			</td>
 			<td>
-			    <a href="#" data-value="book016" onclick="fnView(this.getAttribute('data-value')); return false;">
+			    <a href="#" data-value="book016" onclick="fnReviews(this.getAttribute('data-value')); return false;">
 			        <img src="./img/Engbook/Holes.PNG" width="200" height="270" />
 			    </a>
 			</td>
 			<td>
-			    <a href="#" data-value="book017" onclick="fnView(this.getAttribute('data-value')); return false;">
+			    <a href="#" data-value="book017" onclick="fnReviews(this.getAttribute('data-value')); return false;">
 			        <img src="./img/Engbook/wonder.PNG" width="200" height="270" />
 			    </a>
 			</td>

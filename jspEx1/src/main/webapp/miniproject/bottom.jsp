@@ -6,9 +6,13 @@
 <meta charset="UTF-8">
 <title>도서관</title>
 <style>
-    body {
+    html, body {
         margin: 0;
-        font-family: Arial, sans-serif;
+        padding: 0;
+        height: 100%; /* 전체 높이 설정 */
+    }
+    .content {
+        padding-bottom: 60px; /* 푸터 높이만큼의 여백 추가 */
     }
     .footer {
         background-color: #f1f1f1;
@@ -19,6 +23,7 @@
         bottom: 0;
         width: 100%;
         border-top: 1px solid #ccc;
+        z-index: 1000; /* 푸터가 페이지 내용 위에 오도록 설정 */
     }
     .footer a {
         color: #007bff;
@@ -30,7 +35,9 @@
 </style>
 </head>
 <body>
-    <!-- 여기에 페이지 내용이 들어갑니다. -->
+    <div class="content">
+        <!-- 여기에 페이지 내용이 들어갑니다. -->
+    </div>
 
     <!-- 푸터 -->
     <div class="footer">

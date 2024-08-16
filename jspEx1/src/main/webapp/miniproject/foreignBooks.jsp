@@ -130,12 +130,12 @@
                                     %>
                                     <tr>
                                         <td>
-                                            <a href="#">
+                                            <a href="#" data-value="bookNum" onclick="fnReviews('<%= bookNum %>'); return false;">
                                                 <img src="<%= imageUrl %>" width="200" height="275" />
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="#">
+                                             <a href="#" data-value="bookNum" onclick="fnReviews('<%= bookNum %>'); return false;">
                                                 <span><%= status %></span><br>
                                                 <span><%= bookName %></span><br>
                                                 <span><%= writer %> | <%= publisher %></span>
@@ -179,5 +179,8 @@
 <script>
 function fnLoan(bookNum) {
     window.open("loan.jsp?booknum=" + bookNum, "loan", "width=500,height=300");
+}
+function fnReviews(bookNum){
+	location.href="reviews.jsp?bookNum="+bookNum;
 }
 </script>
