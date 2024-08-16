@@ -225,17 +225,8 @@ function fnInsert() {
     var id = encodeURIComponent(form.id.value);
     var evaluation = encodeURIComponent(form.evaluation.value);
     var content = encodeURIComponent(form.content.value);
-
-    // URL에 여러 값을 전달
-    window.open("reviews-insert.jsp?bookNum=" + bookNum + "&title=" + title + "&id=" + id + "&evaluation=" + evaluation + "&content=" + content, "reviews", "width=500,height=300");
+	window.open("reviews-insert.jsp?bookNum=" + bookNum + "&title=" + title + "&id=" + id + "&evaluation=" + evaluation + "&content=" + content, "reviews", "width=500,height=300");
 }
-
-	function fnInsert1(){
-		var form = document.reviews;
-		form.action = "reviews-insert.jsp";
-		form.submit();
-		
-	}
 </script>
 
 
