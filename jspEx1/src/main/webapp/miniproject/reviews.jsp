@@ -42,9 +42,7 @@ table {
     margin-bottom: 20px;
 }
 
-table, th, td, tr {
-	padding : 20px;
-	margin : 20px;
+table, th, td {
     border: 1px solid #ddd;
 }
 
@@ -65,9 +63,6 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-div{
-    margin : 20px;
-    }
 form div {
     margin-bottom: 10px;
 }
@@ -173,10 +168,10 @@ textarea {
 				<tr> <td>출판사 </td> <td>  <%= rs.getString("publisher") %></div></td></tr>
 				</table>
 				<hr>
-				<div>제목 : <input type="text" name="title" placeholder="제목" ></div>
-				<div>별점 : <input type="text" name="evaluation" placeholder="별점" ></div>
-				<div>내용 : <input type="text" name="content" placeholder="내용" ></div>
-				<div><button type="button" onclick = "fnInsert()">등록</button></div>
+				<div>제목 : <input type="text" name="title" placeholder="제목" >
+				<div>별점 : <input type="text" name="evaluation" placeholder="별점" >
+				<div>내용 : <input type="text" name="content" placeholder="내용" >
+				<button type="button" onclick = "fnInsert()">등록</button>
 				</div>
 				<hr>
 			
@@ -196,9 +191,11 @@ textarea {
 
 			%><tr> <td><%
 			out.println(rs.getString("id"));
-			%></td> <td><%
+			%></td><%
+			%><td><%
 			out.println(rs.getString("Evaluation"));
-			%></td> <td><%
+			%></td><%
+			%><td><%
 			out.println(rs.getString("content"));
 			%></td> </tr><%
 		
@@ -228,6 +225,8 @@ function fnInsert() {
     var id = encodeURIComponent(form.id.value);
     var evaluation = encodeURIComponent(form.evaluation.value);
     var content = encodeURIComponent(form.content.value);
+
+    // URL에 여러 값을 전달
     window.open("reviews-insert.jsp?bookNum=" + bookNum + "&title=" + title + "&id=" + id + "&evaluation=" + evaluation + "&content=" + content, "reviews", "width=500,height=300");
 }
 
