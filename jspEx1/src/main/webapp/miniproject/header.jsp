@@ -12,8 +12,6 @@
         h3 {
             margin: 0;
             text-align: center;
-            
-            
         }
         hr {
             border: 1px solid #ccc;
@@ -39,7 +37,6 @@
         li a:hover {
             background-color: #111;
         }
-       
         .dropdown-content {
             display: none;
             position: absolute;
@@ -68,6 +65,11 @@
     <title>도서관</title>
 </head>
 <body>
+    <% 
+        HttpSession sess = request.getSession(false); // 세션 객체를 가져옵니다.
+        boolean loggedIn = (sess != null && sess.getAttribute("id") != null); // 로그인 상태 확인
+        String id = (sess != null) ? (String)sess.getAttribute("id") : null;
+    %>
     <h3><a href="home.jsp"><img src="img/logo.png" height="80" alt="도서관 로고" /></a></h3>
     <hr>
     <ul>
@@ -94,26 +96,20 @@
             <div class="dropdown-content">
                 <a href="myPage.jsp">프로필 수정</a>
                 <a href="loanHistory.jsp">대출 한 책</a>
+                <% if (id != null && id.equals("admin")) { %>
+                    <a href="user-list.jsp">유저 리스트</a>
+                <% } %>
+                <% if (id != null && id.equals("admin")) { %>
+                    <a href="reviews-list.jsp">리뷰 리스트</a>
+                <% } %>
             </div>
         </li>
-        <%
-            HttpSession sess = request.getSession(false); // 세션 객체를 가져옵니다.
-            boolean loggedIn = (sess != null && session.getAttribute("id") != null); // 로그인 상태 확인
-        %>
         <li class="dropdown">
-            <%
-                if (loggedIn) {
-                    // 로그인된 상태일 때
-            %>
-                    <a href="logout.jsp" class="dropbtn">로그아웃</a>
-            <%
-                } else {
-                    // 로그인되지 않은 상태일 때
-            %>
-                    <a href="login.jsp" class="dropbtn">로그인</a>
-            <%
-                }
-            %>
+            <% if (loggedIn) { %>
+                <a href="logout.jsp" class="dropbtn">로그아웃</a>
+            <% } else { %>
+                <a href="login.jsp" class="dropbtn">로그인</a>
+            <% } %>
         </li>
     </ul>
 </body>

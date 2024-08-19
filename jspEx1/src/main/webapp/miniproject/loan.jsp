@@ -25,12 +25,24 @@
         String id = (String) session.getAttribute("id");
         
         if (id == null) {
-            out.println("로그인 정보가 없습니다.");
+            out.println("<script>alert('로그인 정보가 없습니다.'); window.close();</script>");
             return;
         }
         
         try {
             stmt = conn.createStatement();
+            
+            // 연체 상태 확인
+            String overdueQuery = "SELECT overdue FROM users WHERE id = '" + id + "'";
+            rs = stmt.executeQuery(overdueQuery);
+            
+            if (rs.next()) {
+                String overdueStatus = rs.getString("overdue");
+                if ("Y".equals(overdueStatus)) {
+                    out.println("<script>alert('연체 기록이 있습니다. 관리자에게 문의해주세요.'); window.close();</script>");
+                    return;
+                }
+            }
             
             // 현재 날짜와 시간 가져오기
             LocalDateTime now = LocalDateTime.now();
@@ -40,26 +52,27 @@
             // SQL INSERT 쿼리문 작성
             String querytext = "INSERT INTO loans (bookNum, loanDate, id) VALUES ('" 
                 + booknum + "', '" + nowStr + "', '" + id + "')";
-            System.out.println(querytext);
             stmt.executeUpdate(querytext);
         
+            // 대출 성공 메시지
+            out.println("<script>");
+            out.println("alert('대출이 되었습니다.');");
+            out.println("window.close();");
+            out.println("if (window.opener && typeof window.opener.fnReload === 'function') {");
+            out.println("window.opener.fnReload();");
+            out.println("}");
+            out.println("</script>");
+        
         } catch(SQLException ex) {
-            out.println("SQLException: " + ex.getMessage());
+            out.println("<script>alert('SQLException: " + ex.getMessage() + "'); window.close();</script>");
         } finally {
             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
             } catch (SQLException e) {
-                out.println("SQLException in finally block: " + e.getMessage());
+                out.println("<script>alert('SQLException in finally block: " + e.getMessage() + "'); window.close();</script>");
             }
         }
     %>
 </body>
 </html>
-<script>
-    alert("대출이 되었습니다.");
-    window.close();
-    if (window.opener && typeof window.opener.fnReload === 'function') {
-        window.opener.fnReload();
-    }
-</script>
