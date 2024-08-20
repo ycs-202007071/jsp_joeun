@@ -30,8 +30,13 @@
 		
 		try{
 			stmt = conn.createStatement();
-			String querytext = "DELETE FROM USERS WHERE id = '" + id + "'";
-			System.out.println(querytext);
+			String querytext = "DELETE FROM reviews WHERE id = '" + id + "'";
+			stmt.executeUpdate(querytext);
+			stmt = conn.createStatement();
+			querytext = "DELETE FROM loans WHERE id = '" + id + "'";
+			stmt.executeUpdate(querytext);
+			stmt = conn.createStatement();
+			querytext = "DELETE FROM USERS WHERE id = '" + id + "'";
 			stmt.executeUpdate(querytext);
 		
 		} catch(SQLException ex) {

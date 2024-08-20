@@ -86,12 +86,10 @@
     <button onclick="location.href='home.jsp'">홈페이지로 이동</button>
     <table>
         <tr>
-            <th>bookNum</th>
-            <th>제목</th>
-            <th>아이디</th>
-            <th>별점</th>
-            <th>내용</th>
-            <th>삭제</th>
+            <th>ID</th>
+            <th>BookNum</th>
+            <th>대출일</th>
+            <th>반납</th>
         </tr>
 
         <%@ include file="db.jsp" %>
@@ -116,7 +114,7 @@
         		// 하단에 몇번까지 출력할지 정하기 위해)
         		// ex) 10개씩 출력할건데 전체 게시글이 35개일 경우
         		//     1~4번까지 하단에 출력
-        		String countQuery = "SELECT COUNT(*) AS total FROM reviews";
+        		String countQuery = "SELECT COUNT(*) AS total FROM loans";
         		ResultSet coun_rs = stmt.executeQuery(countQuery);
         		int total = 0;
         		if (coun_rs.next()) {
@@ -131,21 +129,19 @@
         		// 페이징 쿼리
         		String querytext = 
         				  "SELECT * "
-        				+ "FROM reviews "
-        				+ "ORDER BY bookNum DESC "
+        				+ "FROM loans "
+        				+ "ORDER BY ID DESC "
         				+ "LIMIT " + pageSize + " OFFSET " + offset;
 
         		rs = stmt.executeQuery(querytext);
                 while (rs.next()) {
             	%>
         <tr>
-            <td><%= rs.getString("bookNum") %></td>
-            <td><%= rs.getString("title") %></td>
             <td><%= rs.getString("id") %></td>
-            <td><%= rs.getString("Evaluation") %></td>
-			<td><%= rs.getString("content") %></td>   
+            <td><%= rs.getString("booknum") %></td>
+            <td><%= rs.getString("loanDate") %></td>   
             <td>
-                <button onclick="fndelete('<%= rs.getString("reviewNo") %>')">삭제</button>
+                <button onclick="fnReturn('<%= rs.getString("booknum") %>')">강제반납</button>
             </td>
         </tr>
         
@@ -182,7 +178,7 @@
 </html>
 
 <script>
-	function fndelete(reviewNo) {
-	    window.open("reviews-delete.jsp?reviewNo=" + encodeURIComponent(reviewNo), "delete", "width=500,height=300");
+	function fnReturn(booknum) {
+	    window.open("return.jsp?booknum=" + encodeURIComponent(booknum), "return", "width=500,height=300");
 	}
 </script>

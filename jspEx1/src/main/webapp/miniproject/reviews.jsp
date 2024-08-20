@@ -134,11 +134,15 @@ textarea {
         String userId = (String) sess.getAttribute("id");
         ResultSet rs = null;
         Statement stmt = null;
+        ResultSet rsLoan = null;
         String bookNum = request.getParameter("bookNum");
         
         try {
             stmt = conn.createStatement();
             String querytext = "SELECT * FROM books LEFT JOIN reviews ON reviews.bookNum = books.bookNum WHERE books.BOOKNUM = '" + bookNum + "'";
+            String loanQuery = "SELECT * FROM loans WHERE bookNum = '" + bookNum + "'";
+            rsLoan = stmt.executeQuery(loanQuery);
+            boolean isLoaned = rsLoan.next(); // Check if there's a loan record
             rs = stmt.executeQuery(querytext);
             
             if (rs.next()) {
@@ -159,7 +163,9 @@ textarea {
                       bookNum.equals("book017") ? "./img/Engbook/wonder.PNG" :
                       bookNum.equals("book018") ? "./img/Engbook/Foster.PNG" :
                       bookNum.equals("book019") ? "./img/bookimg/더 좋은 문장을 쓰고 싶은 당신을 위한 필사책.PNG" :
-                      "./img/bookimg/대모험.jpg";
+                    	  bookNum.equals("book010") ? "./img/Engbook/The Jungle Rules.jpg" :
+                          	bookNum.equals("book001") ? "./img/bookimg/대모험.jpg" :
+                                  "./img/bookimg/img.jpg";
     %>    
                 <input type="hidden" value="<%= rs.getString("bookNum") %>" name="bookNum"> 
                 <input type="hidden" name="id" value="<%= userId %>"> 
@@ -170,6 +176,11 @@ textarea {
                     <tr> <td>제목 </td> <td> <%= rs.getString("bookName") %></td></tr>
                     <tr> <td>글쓴이 </td> <td> <%= rs.getString("writer") %></td></tr>
                     <tr> <td>출판사 </td> <td> <%= rs.getString("publisher") %></td></tr>
+                     <tr> <td>대출 </td> <td> <% if (!isLoaned) { %>
+                                                <button onclick="fnLoan('<%= bookNum %>')">대출</button>
+                                            <% }else{ %>
+                                            	<div>누군가가 대출한 책입니다.</div>
+                                            <%} %></td></tr>
                 </table>
                 <hr>
                 
@@ -233,6 +244,9 @@ function fnInsert() {
 }
 function fndelete(reviewNo) {
     window.open("reviews-delete.jsp?reviewNo=" + encodeURIComponent(reviewNo), "delete", "width=500,height=300");
+}
+function fnLoan(bookNum) {
+    window.open("loan.jsp?booknum=" + bookNum, "loan", "width=500,height=300");
 }
 </script>
 

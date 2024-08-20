@@ -113,7 +113,9 @@
                                     bookNum.equals("book016") ? "./img/Engbook/Holes.PNG" :
                                     bookNum.equals("book017") ? "./img/Engbook/wonder.PNG" :
                                     bookNum.equals("book018") ? "./img/Engbook/Foster.PNG" :
-                                      "./img/bookimg/대모험.jpg";
+                                    bookNum.equals("book010") ? "./img/Engbook/The Jungle Rules.jpg" :
+                                    	bookNum.equals("book001") ? "./img/bookimg/대모험.jpg" :
+                                            "./img/bookimg/img.jpg";
 
                     // 대출 상태 확인
                     String loanQuery = "SELECT * FROM loans WHERE bookNum = ?";

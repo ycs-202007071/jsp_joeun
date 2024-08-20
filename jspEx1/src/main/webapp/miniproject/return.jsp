@@ -33,7 +33,7 @@
             stmt = conn.createStatement();
 
             // SQL INSERT 쿼리문 작성
-            String querytext = "DELETE FROM LOANS WHERE id = '" + id + "' AND BOOKNUM ='"+ booknum + "'" ;
+            String querytext = "DELETE FROM LOANS WHERE BOOKNUM ='"+ booknum + "'" ;
             System.out.println(querytext);
             stmt.executeUpdate(querytext);
         

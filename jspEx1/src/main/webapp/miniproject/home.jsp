@@ -70,8 +70,8 @@ caption {
         </tr>
         <tr>
 	       <td>
-			    <a href="#" data-value="book018" onclick="fnReviews(this.getAttribute('data-value')); return false;">
-			        <img src="./img/Engbook/Foster.PNG" width="200" height="270" />
+			    <a href="#" data-value="book010" onclick="fnReviews(this.getAttribute('data-value')); return false;">
+			        <img src="./img/Engbook/The Jungle Rules.jpg" width="200" height="270" />
 			    </a>
 			</td>
 			<td>

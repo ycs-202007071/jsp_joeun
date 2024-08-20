@@ -102,6 +102,9 @@
                 <% if (id != null && id.equals("admin")) { %>
                     <a href="reviews-list.jsp">리뷰 리스트</a>
                 <% } %>
+                <% if (id != null && id.equals("admin")) { %>
+                    <a href="userLoan.jsp">강제반납</a>
+                <% } %>
             </div>
         </li>
         <li class="dropdown">

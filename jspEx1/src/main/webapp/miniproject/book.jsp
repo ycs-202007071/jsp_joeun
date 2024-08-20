@@ -122,7 +122,9 @@
                                                    bookNum.equals("book017") ? "./img/Engbook/wonder.PNG" :
                                                    bookNum.equals("book018") ? "./img/Engbook/Foster.PNG":
                                                    bookNum.equals("book019") ? "./img/bookimg/더 좋은 문장을 쓰고 싶은 당신을 위한 필사책.PNG":
-                                                     "./img/bookimg/대모험.jpg";
+                                                	   bookNum.equals("book010") ? "./img/Engbook/The Jungle Rules.jpg" :
+                                                		   bookNum.equals("book001") ? "./img/bookimg/대모험.jpg" :
+                                                               "./img/bookimg/img.jpg";
                                    
                                     String loanQuery = "SELECT * FROM loans WHERE bookNum = '" + bookNum + "'";
                                     rsLoan = stmt.executeQuery(loanQuery);
