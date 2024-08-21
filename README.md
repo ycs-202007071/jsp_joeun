@@ -21,4 +21,4 @@
 ![JSP](https://img.shields.io/badge/JSP-%2300AEFF.svg?style=for-the-badge&logo=JSP&logoColor=white)
 
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ycs-202007071)](https://github.com/anuraghazra/github-readme-stats)
+
