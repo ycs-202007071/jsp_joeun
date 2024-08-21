@@ -9,6 +9,8 @@
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![JSP](https://img.shields.io/badge/JSP-%23E34F26.svg?style=for-the-badge&logo=JSP&logoColor=white)
+
 
 # 🖥프로젝트 소개
 - jsp로 책을 대출하거나 반납 할 수 있는 사이트를 제작했습니다.
