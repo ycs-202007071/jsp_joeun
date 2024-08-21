@@ -16,3 +16,6 @@
 
 # ✏개발기간 
 - 2024.08.12~2024.08.20
+
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ycs-202007071)](https://github.com/anuraghazra/github-readme-stats)
